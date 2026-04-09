@@ -1,0 +1,376 @@
+/* GLOBAL SETTINGS */
+:root {
+    --parc-green: #2e7d32;
+    --dark-sidebar: #1b3022;
+    --bg-light: #f4f7f6;
+    --zumba-pink: #ff4081;
+}
+
+body {
+    background-color: var(--bg-light);
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* SIDEBAR SYSTEM FIX */
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #1b3022; /* Your dark green theme */
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    z-index: 1000;
+}
+
+/* Sidebar Branding */
+.sidebar-header {
+    padding: 0 25px 30px 25px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 20px;
+}
+
+.sidebar-header h4 {
+    color: #ffffff !important;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+/* Sidebar Links - The "Messy" Part Fix */
+.sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.7) !important; /* Force light grey text */
+    padding: 12px 25px;
+    margin: 4px 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+/* Hover Effect */
+.sidebar .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff !important;
+}
+
+/* Active Page Style */
+.sidebar .nav-link.active {
+    background-color: #2e7d32; /* Parc Green */
+    color: #ffffff !important;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Icons Spacing */
+.sidebar .nav-link i {
+    width: 25px;
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+/* Logout Button at Bottom */
+.logout-link {
+    margin-top: auto;
+    color: #ff6b6b !important;
+}
+
+.main-content {
+    margin-left: 250px; /* Width of the sidebar */
+    padding: 40px;
+    background-color: #f4f7f6;
+    min-height: 100vh;
+}
+
+/* AI CARD & VIEWPORT */
+.ai-card {
+    background: white;
+    border-radius: 25px;
+    padding: 25px;
+    border: 2px solid #eee;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.ai-talking {
+    border-color: var(--zumba-pink) !important;
+    box-shadow: 0 0 25px rgba(255, 64, 129, 0.4) !important;
+}
+
+.avatar-viewport {
+    width: 100%;
+    height: 450px;
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 5px solid #fff;
+}
+
+.avatar-viewport img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* ENHANCED READABILITY FOR SENIORS */
+.ai-message-bubble {
+    background: #ffffff;
+    border: 4px solid var(--parc-green);
+    border-radius: 25px;
+    padding: 35px;
+    margin-top: 25px;
+    
+    /* Bigger, spaced-out text */
+    font-size: 1.6rem; 
+    line-height: 2.2; 
+    color: #1b3022;
+    
+    /* Vertical spacing for steps */
+    white-space: pre-line; 
+    min-height: 350px;
+    box-shadow: inset 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* Highlight the current step being read */
+.current-step-highlight {
+    color: var(--parc-green);
+    font-weight: 800;
+    text-transform: uppercase;
+    display: block;
+    border-bottom: 2px solid #eee;
+    margin-bottom: 10px;
+}
+
+/* TOAST & BUTTONS */
+#saveToast {
+    display: none;
+    background: var(--parc-green);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+    font-weight: bold;
+    border: 3px solid white;
+}
+
+.btn-stop {
+    background-color: #dc3545; /* Red for "Stop" */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
+}
+
+.btn-stop:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+/* Progress Page Specifics */
+.bg-light-success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.stat-card h2 {
+    color: #1b3022;
+}
+
+.activity-feed {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Ensure the sidebar matches the tutorial page precisely */
+.sidebar .nav-link.active {
+    background-color: #2e7d32 !important;
+    color: #ffffff !important;
+    font-weight: 700;
+}
+.contact-section {
+    background-color: #f8f9fa; /* Light grey background to separate from white cards */
+    border-top: 1px solid #dee2e6;
+}
+
+.contact-section h2 {
+    color: #1b3022; /* Dark green from your dashboard banner */
+}
+
+.contact-desc {
+    color: #495057; /* Dark grey for readability */
+    max-width: 500px;
+}
+
+.contact-info li {
+    color: #2e7d32; /* Signature green for contact details */
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.contact-info i {
+    width: 25px;
+    color: #1b3022;
+}
+.purpose-card {
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    border: none;
+    transition: transform 0.3s ease;
+}
+
+.purpose-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Purpose Cards Styling */
+.purpose-card {
+    height: 350px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+    background-size: cover;      /* Forces image to fill the box */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat;
+}
+
+.purpose-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Individual Background Images - Corrected for your actual filenames */
+.card-1 { background-image: url('images/avtr_bg.jpg'); }
+.card-2 { background-image: url('images/logic_bg.jpg'); }
+
+/* This one fixes the double .jpg.jpg extension from your folder */
+.card-3 { background-image: url('images/fitness_track.jpg'); }
+
+.card-glass-content {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.1); /* Frosted glass effect */
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    text-align: left;
+}
+
+.card-glass-content h5 {
+    font-weight: 700;
+    color: #00ff88; /* Accent green to match AI predictions */
+}
+
+/* Connect Footer Styling */
+.connect-footer {
+    background: #111; /* Solid dark background to differentiate */
+    border-top: 2px solid #2e7d32;
+}
+
+.contact-links p {
+    color: #00ff88;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.contact-links i {
+    color: white;
+    margin-right: 10px;
+}
+:root {
+        --parc-green: #2e7d32; /* Deep forest green from the logo */
+        --parc-lime: #8bc34a;  /* Bright lime accent */
+        --parc-white: #ffffff;
+        --parc-dark: #121212;
+    }
+
+    body { 
+        font-family: 'Nunito', sans-serif; 
+        background-color: var(--parc-dark);
+        color: var(--parc-white);
+    }
+    
+    .hero-section {
+    /* The 'images/' prefix tells PHP/CSS to look inside your subfolder */
+    background: linear-gradient(rgba(18, 18, 18, 0.6), rgba(46, 125, 50, 0.4)), 
+                url('images/background.jpg') no-repeat center center;
+    background-size: cover;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    }
+
+    .navbar { 
+        background: var(--parc-white); 
+        border-bottom: 4px solid var(--parc-green); 
+    }
+
+    .navbar-brand { 
+        color: var(--parc-green) !important; 
+        font-weight: 800;
+        letter-spacing: 0.5px;
+    }
+
+    .btn-primary { 
+        background-color: var(--parc-green); 
+        border: none; 
+        color: white;
+        padding: 12px 30px;
+        transition: 0.3s;
+    }
+
+    .btn-primary:hover { 
+        background-color: var(--parc-lime);
+        color: #121212;
+        transform: translateY(-2px);
+    }
+
+    .btn-outline-green {
+        border: 2px solid var(--parc-green);
+        color: var(--parc-green);
+        font-weight: 700;
+    }
+
+    .btn-outline-green:hover {
+        background-color: var(--parc-green);
+        color: white;
+    }
+
+    .feature-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-left: 5px solid var(--parc-lime);
+    }
+
+.main-content h2 {
+    color: #1b3022 !important; /* Dark green to match your sidebar */
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+.chart-container {
+    width: 100%;       /* Forces landscape width */
+    height: 400px;     /* Fixed height to prevent vertical stretching */
+    position: relative;
+    margin-top: 20px;
+}
