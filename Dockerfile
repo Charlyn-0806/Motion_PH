@@ -1,15 +1,17 @@
 FROM php:8.1-apache
 
-# Install required PHP extensions
+# Install PHP extensions
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-# Disable conflicting MPM modules
-RUN a2dismod mpm_event mpm_worker || true
+# HARD reset Apache MPM modules (important fix)
+RUN a2dismod mpm_event || true
+RUN a2dismod mpm_worker || true
+RUN a2dismod mpm_prefork || true
 
-# Enable correct MPM for PHP
+# Enable ONLY prefork (required for PHP)
 RUN a2enmod mpm_prefork
 
-# Enable rewrite (optional but common for PHP apps)
+# Enable rewrite (optional but safe)
 RUN a2enmod rewrite
 
 # Copy project files
