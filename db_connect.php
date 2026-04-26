@@ -1,9 +1,13 @@
 <?php
-$host = getenv('DB_HOST') ?: 'localhost';
-$db   = getenv('DB_NAME') ?: 'motion_ph';
-$user = getenv('DB_USER') ?: 'root';
-$pass = getenv('DB_PASS') ?: '';
+$host = getenv('DB_HOST');
+$db   = getenv('DB_NAME');
+$user = getenv('DB_USER');
+$pass = getenv('DB_PASS');
 $charset = 'utf8mb4';
+
+if (!$host || !$db || !$user) {
+    die("Missing database environment variables.");
+}
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 
@@ -16,6 +20,6 @@ $options = [
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (PDOException $e) {
-    die("DB error: " . $e->getMessage());
+    die("DB connection failed.");
 }
 ?>
